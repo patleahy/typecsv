@@ -21,3 +21,7 @@ The colors are based on the [Rainbow CSV VSCode Extension](https://marketplace.v
 ## Download
 
 You can down the latest version of the TypeCsv.exe program from [the releases tab](https://github.com/patleahy/TypeCsv/releases).
+
+[![Build status](https://ci.appveyor.com/api/projects/status/3mun20ox0o01p1iu?svg=true)](https://ci.appveyor.com/project/patleahy/typecsv)
+[![Latest Release](https://badgen.net/github/release/patleahy/typecsv)](https://github.com/patleahy/TypeCsv/releases)	
+[![MIT License](https://badgen.net/github/license/patleahy/typecsv)](https://github.com/patleahy/TypeCsv/blob/master/LICENSE.md)
