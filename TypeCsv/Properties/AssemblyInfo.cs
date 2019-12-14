@@ -6,9 +6,9 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("TypeCsv")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Displays a CSV with each column in a different color")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Pat Leahy")]
 [assembly: AssemblyProduct("TypeCsv")]
 [assembly: AssemblyCopyright("Copyright ©  2019")]
 [assembly: AssemblyTrademark("")]
