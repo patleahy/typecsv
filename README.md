@@ -1,7 +1,7 @@
 # TypeCsv
 
 [![Build status](https://ci.appveyor.com/api/projects/status/3mun20ox0o01p1iu?svg=true)](https://ci.appveyor.com/project/patleahy/typecsv)
-![Latest Release](https://badgen.net/github/release/patleahy/typecsv)
+[![Latest Release](https://badgen.net/github/release/patleahy/typecsv)](https://github.com/patleahy/TypeCsv/releases)
 
 Windows console program to displays a CSV with each column in a different color.
 ```
