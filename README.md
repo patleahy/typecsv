@@ -1,6 +1,6 @@
 # TypeCsv
 
-Displays a CSV with each column in a different color.
+Windows console program to displays a CSV with each column in a different color.
 ```
     typecsv <filepath>
 ```
