@@ -16,7 +16,12 @@ namespace TypeCsv
             if ((args.Length > 0) && (args[0] == "/?"))
                 return Help();
 
+
+            // Remember the foreground color when the program started.
+            _foregroundColor = Console.ForegroundColor;
+
             // Intercept key presses so that we reset the color before the exiting if the user presses Ctrl+C.
+            _break = false;
             Console.CancelKeyPress += new ConsoleCancelEventHandler(CancelKeyPress);
 
             SetupTerminalForColor();
@@ -37,14 +42,13 @@ namespace TypeCsv
             return 1;
         }
 
-        // Remember the foreground color when the program started.
-        static ConsoleColor _foregroundColor = Console.ForegroundColor;
+        static ConsoleColor _foregroundColor;
+        static bool _break;
 
         static void ResetForegroundColor()
         {
-            Console.ForegroundColor = _foregroundColor;
-            Console.WriteLine("\n");
             Console.Out.Flush();
+            Console.ForegroundColor = _foregroundColor;
         }
 
         // Read a file and output it with colors.
@@ -90,6 +94,9 @@ namespace TypeCsv
                     join = ",";
                 }
                 Console.WriteLine();
+
+                if (_break)
+                    return;
             }
         }
 
@@ -114,14 +121,13 @@ namespace TypeCsv
             Console.Write($"\x1b[38;2;{color}m");
         }
 
-        // If the user presses Ctrl+C then exit after we reset the color.
-        // If they press any other key do nothing.
+        // If the user presses Ctrl+C then exit stop processing input and exit cleanly so that the console color is reset.
         static void CancelKeyPress(object sender, ConsoleCancelEventArgs args)
         {
             if (args.SpecialKey == ConsoleSpecialKey.ControlC)
             {
-                ResetForegroundColor();
-                System.Environment.Exit(1);
+                _break = true;
+                args.Cancel = true;
             }
         }
 
