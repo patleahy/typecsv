@@ -82,6 +82,8 @@ namespace TypeCsv
                 string join = "";
                 foreach (var part in line.Split(",".ToCharArray()))
                 {
+                    Console.Write(join);
+
                     if (!inQuotes)
                     {
                         ConsoleColor(Colors[i++ % Colors.Count]);
@@ -89,7 +91,6 @@ namespace TypeCsv
                     }
                     inQuotes &= !part.EndsWith("\"");
 
-                    Console.Write(join);
                     Console.Write(part);
                     join = ",";
                 }
