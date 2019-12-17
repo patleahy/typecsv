@@ -4,7 +4,7 @@ using TypeCsv.Splitters;
 
 namespace TypeCsv
 {
-    // Displays a CSV with each column in a different color
+    // Displays a delimited text files with each column in a different color
     //
     // See Help()
     class Program
@@ -60,11 +60,6 @@ namespace TypeCsv
         // Read input and output it with colors.
         static void Type(TextReader reader)
         {
-            // The input line is split on every comma.
-            // Sometines a comma is inside a cell if the cell begins with a double quote.
-            // If we find a cel with that starts with a double quote then don't change the color until we find
-            // a cell that ends with a double quote.
-
             ISplitter splitter = CreateSplitter();
 
             string line;

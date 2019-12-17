@@ -12,6 +12,10 @@ namespace TypeCsv.Splitters
 
         private ConsoleColor _consoleColor;
 
+        // The input line is split on every comma.
+        // Sometines a comma is inside a cell if the cell begins with a double quote.
+        // If we find a cel with that starts with a double quote then don't change the color until we find
+        // a cell that ends with a double quote.
         public List<string> Split(string line)
         {
             List<string> parts = new List<string>();
