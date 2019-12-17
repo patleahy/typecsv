@@ -12,8 +12,12 @@ namespace TypeCsv
         static int Main(string[] args)
         {
             _options = new Options(args);
+
             if (_options.Help)
                 return Help();
+
+            if (_options.Version)
+                return Version();
 
             // Remember the foreground color when the program started.
             _consoleColor = new ConsoleColor();
@@ -94,6 +98,7 @@ namespace TypeCsv
 
         static int Help()
         {
+            Console.WriteLine();
             Console.WriteLine("Displays a CSV with each column in a different color.");
             Console.WriteLine();
             Console.WriteLine("    typecsv <filepath>");
@@ -104,6 +109,13 @@ namespace TypeCsv
             Console.WriteLine();
             Console.WriteLine("    type log.csv | typecsv");
             Console.WriteLine();
+            return 1;
+        }
+
+        static int Version()
+        {
+            var name = typeof(Program).Assembly.GetName();
+            Console.WriteLine($"{name.Name} {name.Version}");
             return 1;
         }
     }
