@@ -9,10 +9,10 @@ namespace TypeCsv
     // See Help()
     class Program
     {
-
         static int Main(string[] args)
         {
-            if ((args.Length > 0) && (args[0] == "/?"))
+            _options = new Options(args);
+            if (_options.Help)
                 return Help();
 
             // Remember the foreground color when the program started.
@@ -25,8 +25,8 @@ namespace TypeCsv
             try
             {
                 // read from file or standard in.
-                if (args.Length > 0)
-                    TypeFile(args[0]);
+                if (_options.HasFilePath)
+                    TypeFile(_options.FilePath);
                 else
                     TypeConsole();
             }
@@ -38,6 +38,7 @@ namespace TypeCsv
             return 1;
         }
 
+        static Options _options;
         static ConsoleColor _consoleColor;
         static bool _break;
 
@@ -64,7 +65,7 @@ namespace TypeCsv
             // If we find a cel with that starts with a double quote then don't change the color until we find
             // a cell that ends with a double quote.
 
-            ISplitter splitter = new CsvSplitter(_consoleColor);
+            ISplitter splitter = CreateSplitter();
 
             string line;
             while ((line = reader.ReadLine()) != null)
@@ -74,6 +75,16 @@ namespace TypeCsv
                 if (_break)
                     return;
             }
+        }
+
+        static ISplitter CreateSplitter()
+        {
+            switch (_options.FileType.Name)
+            {
+                case "csv": return new CsvSplitter(_consoleColor);
+                case "token": return new TokenSplitter(_options.FileType.Token, _consoleColor);
+            }
+            throw new InvalidOperationException();
         }
 
         // If the user presses Ctrl+C then exit stop processing input and exit cleanly so that the console color is reset.
