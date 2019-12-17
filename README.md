@@ -18,6 +18,38 @@ The example data is from the [Protein Secondary Structure](https://www.kaggle.co
 
 The colors are based on the [Rainbow CSV VSCode Extension](https://marketplace.visualstudio.com/items?itemName=mechatroner.rainbow-csv).
 
+## Other File Formats
+
+This tool also displays other delimited file formats with colors for each column. The file extensions is used to determine the file type. The following file formats are supported:
+
+| Extension | File Type              |
+|:---------:| ---------------------- |
+|    csv    | Comma Separated Values |
+|    tab    | Tab delimited file     |
+|    tsv    | Tab delimited file     |
+
+You can also specify which file format should be used using command line arguments as follows:
+
+| Argument | File Type               |
+|:--------:| ----------------------- |
+|   /csv   | Comma Separated Values  |
+|   /tab   | Tab Delimited File      |
+|   /pipe  | Pipe ( \| ) Delimited File |
+
+For example to specify that a file with a log extension should be treated as a tab delimited file you can do this:
+
+```
+    typecsv ex20191014.log | typecsv /tab
+```
+
+If now of the expected file extensions match and you don't specify the file type then the program defaults to CSV.
+
+You can also specify any delimiter you want using the /token argument. For example to split the out out of the findstr command using semicolons you could type:
+
+```
+    findstr error *.log | typecsv /token ;
+```
+
 ## Download
 
 You can down the latest version of the TypeCsv.exe program from [releases](https://github.com/patleahy/TypeCsv/releases).

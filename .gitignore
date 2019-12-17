@@ -19,3 +19,5 @@ bld/
 # VSCode directory
 .vscode/
 
+
+*.user
