@@ -28,6 +28,8 @@ This tool also displays other delimited file formats with colors for each column
 |    tab    | Tab delimited file     |
 |    tsv    | Tab delimited file     |
 
+If the file has none of these types or the text is being read from standard input then the number of commas, tabs and pipes in the first line is used to determine the file type.
+
 You can also specify which file format should be used using command line arguments as follows:
 
 | Argument | File Type               |
@@ -41,8 +43,6 @@ For example to specify that a file with a log extension should be treated as a t
 ```
     typecsv ex20191014.log | typecsv /tab
 ```
-
-If now of the expected file extensions match and you don't specify the file type then the program defaults to CSV.
 
 You can also specify any delimiter you want using the /token argument. For example to split the out out of the findstr command using semicolons you could type:
 

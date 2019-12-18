@@ -54,10 +54,6 @@ namespace TypeCsv
                     case ".tsv": FileType = TAB; break;
                 }
             }
-
-            // If we still don't know the file type then default to CSV.
-            if (FileType == null)
-                FileType = CSV;
         }
     
         public string FilePath { get; private set; }
@@ -66,9 +62,9 @@ namespace TypeCsv
         public bool Version { get; protected set; }
         public FileType FileType { get; private set; }
 
-        private static FileType CSV = new FileType { Name = "csv" };
-        private static FileType TAB = new FileType { Name = "token", Token = "\t" };
-        private static FileType PIPE = new FileType { Name = "token", Token = "|" };
+        public static FileType CSV = new FileType { Name = "csv" };
+        public static FileType TAB = new FileType { Name = "token", Token = "\t" };
+        public static FileType PIPE = new FileType { Name = "token", Token = "|" };
     }
 
     public class FileType 

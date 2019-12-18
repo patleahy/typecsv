@@ -64,11 +64,14 @@ namespace TypeCsv
         // Read input and output it with colors.
         static void Type(TextReader reader)
         {
-            ISplitter splitter = CreateSplitter();
+            ISplitter splitter = null;
 
             string line;
             while ((line = reader.ReadLine()) != null)
             {
+                if (splitter == null)
+                    splitter = CreateSplitter(line);
+
                 splitter.Type(splitter.Split(line));
 
                 if (_break)
@@ -76,14 +79,40 @@ namespace TypeCsv
             }
         }
 
-        static ISplitter CreateSplitter()
+        static ISplitter CreateSplitter(string line)
         {
-            switch (_options.FileType.Name)
+            var fileType = _options.FileType ?? SniffFileType(line);
+
+            switch (fileType.Name)
             {
                 case "csv": return new CsvSplitter(_consoleColor);
-                case "token": return new TokenSplitter(_options.FileType.Token, _consoleColor);
+                case "token": return new TokenSplitter(fileType.Token, _consoleColor);
             }
             throw new InvalidOperationException();
+        }
+
+        // If the file has none of these types or the text is being read from standard input then the number of commas, 
+        // tabs and pipes in the first line is used to determine the file type.
+        static FileType SniffFileType(string line)
+        {
+            int csv = 0;
+            int tab = 0;
+            int pipe = 0;
+
+            foreach(var ch in line)
+            {
+                switch(ch)
+                {
+                    case ',':  csv++;  break;
+                    case '\t': tab++;  break;
+                    case '|':  pipe++; break;
+                }
+            }
+            if (csv >= tab && csv >= pipe)
+                return Options.CSV;
+            if (tab >= pipe)
+                return Options.TAB;
+            return Options.PIPE;
         }
 
         // If the user presses Ctrl+C then exit stop processing input and exit cleanly so that the console color is reset.
