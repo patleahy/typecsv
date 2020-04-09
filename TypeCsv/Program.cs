@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Text;
 using TypeCsv.Splitters;
 
 namespace TypeCsv
@@ -49,7 +50,8 @@ namespace TypeCsv
         // Read a file and output it with colors.
         static void TypeFile(string filepath)
         {
-            using (var reader = File.OpenText(filepath))
+            using (var stream = new FileStream(filepath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
+            using (var reader = new StreamReader(stream, Encoding.Default))
             {
                 Type(reader);
             }
