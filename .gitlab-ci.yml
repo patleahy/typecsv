@@ -10,10 +10,6 @@ build:
   artifacts:
     paths:
       - 'TypeCsv\bin\Release\TypeCsv.exe'
-  release:
-    assets:
-      - name: 'TypeCsv.exe'
-        path: 'TypeCsv\bin\Release\TypeCsv.exe'
   tags : [windows]
 
 release:
