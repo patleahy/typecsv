@@ -11,6 +11,7 @@ build:
     paths:
       - 'TypeCsv\bin\Release\TypeCsv.exe'
   release:
+    name: $CI_PROJECT_NAME $CI_COMMIT_SHORT_SHA
     assets:
       - 'TypeCsv\bin\Release\TypeCsv.exe'
 
