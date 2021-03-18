@@ -19,6 +19,6 @@ release:
   script:
     - |
       release-cli create --name "Release $CI_COMMIT_TAG" --tag-name $CI_COMMIT_TAG \
-        --assets-link "{\"name\":\"Executable file\",\"url\":\"https://gitlab.com/patleahy/TypeCsv/-/jobs/artifacts/master/file/TypeCsv/bin/Release/TypeCsv.exe?job=build\"}"
+        --assets-link "{\"name\":\"Executable file (TypeCsv.exe)\",\"url\":\"https://gitlab.com/patleahy/TypeCsv/-/jobs/artifacts/master/file/TypeCsv/bin/Release/TypeCsv.exe?job=build\"}"
   rules:
     - if: $CI_COMMIT_TAG
