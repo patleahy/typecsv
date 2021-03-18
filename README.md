@@ -52,7 +52,4 @@ You can also specify any delimiter you want using the /token argument. For examp
 
 ## Download
 
-You can down the latest version of the TypeCsv.exe program from [releases](https://github.com/patleahy/TypeCsv/releases).
-
-[![Build status](https://ci.appveyor.com/api/projects/status/3mun20ox0o01p1iu?svg=true)](https://ci.appveyor.com/project/patleahy/typecsv)
-[![MIT License](https://badgen.net/github/license/patleahy/typecsv)](https://github.com/patleahy/TypeCsv/blob/master/LICENSE.md)
+You can down the latest version of the TypeCsv.exe program from [releases](https://gitlab.com/patleahy/TypeCsv/-/releases).
